@@ -1,5 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import Land
+
 def index(request):
-    return HttpResponse("test")
+    first_10_lands = Land.objects.all()[:10]
+    context = {
+        'first_10_lands': first_10_lands,
+    }
+    return render(request, 'web_main/index.html', context)
+
+def land_detail(request, land_id):
+    context = {}
+    return render(request, 'web_main/index.html', context)

@@ -31,10 +31,18 @@ class Owner(models.Model):
 
 class Land(models.Model):
     id = models.AutoField(unique=True, primary_key=True)
-    county_id = models.ForeignKey(County, on_delete=models.CASCADE)
+    county_id = models.ForeignKey(
+        County,
+        on_delete=models.CASCADE,
+        db_column='county_id',
+    )
     rating = models.IntegerField(blank=True, null=True)
     area = models.TextField(blank=True, null=True)
-    owner_id = models.ForeignKey(Owner, on_delete=models.CASCADE)
+    owner_id = models.ForeignKey(
+        Owner,
+        on_delete=models.CASCADE,
+        db_column='owner_id',
+    )
 
     class Meta:
         managed = True

@@ -1,0 +1,7 @@
+{% if first_10_lands %}
+  <ul>
+  {% for land in first_10_lands %}
+    <li><a href="/land/{{ land.id }}/">Land: {{ land.id }}</a> </li>
+  {% endfor %}
+  </ul>
+{% endif %}
