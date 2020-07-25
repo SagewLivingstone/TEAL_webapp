@@ -3,7 +3,7 @@
 
 ## Installation and Setup:
 
-_requirements.txt still needs to be created for prod_
+_requirements.txt still in progress for prod_
 
 Python:
 ```
