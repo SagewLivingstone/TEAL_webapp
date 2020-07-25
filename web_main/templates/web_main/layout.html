@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% include 'web_main/_site_styles.html' %}
+
+    <title>TEAL Web Interface</title>
+  </head>
+  <body>
+    {% include 'web_main/_navigation.html' %}
+
+    {% block body %}
+    {% endblock %}
+
+    <!-- CDN Includes at bottom for speed -->
+    {% include 'web_main/_site_scripts.html' %}
+
+  </body>
+</html>

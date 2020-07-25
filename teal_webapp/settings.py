@@ -13,14 +13,15 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import configparser
 
-# settings.ini Config Setup
-config = configparser.ConfigParser()
-config.read('./security/settings.ini')
-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
+# settings.ini Config Setup
+config = configparser.RawConfigParser()
+settings_path = os.path.join(BASE_DIR, 'teal_webapp/security/settings.ini')
+config.read(settings_path)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
