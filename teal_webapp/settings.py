@@ -11,6 +11,12 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import configparser
+
+# settings.ini Config Setup
+config = configparser.ConfigParser()
+config.read('./security/settings.ini')
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -19,11 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-with open(os.path.join(BASE_DIR, 'teal_webapp/security/secret_key.txt')) as f:
-    SECRET_KEY = f.read().strip()
+
+SECRET_KEY = config.get('APP', 'SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not globals().get('PRODUCTION')
+DEBUG = config.getboolean('APP', 'DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -76,8 +82,11 @@ WSGI_APPLICATION = 'teal_webapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': config.get('DATABASE', 'ENGINE'),
+        'NAME':   config.get('DATABASE', 'CATALOG'),
+        'HOST':   config.get('DATABASE', 'HOST'),
+        'USER':   config.get('DATABASE', 'USER'),
+        'PASSWORD': config.get('DATABASE', 'PASSWORD'),
     }
 }
 
@@ -106,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/Denver'
+TIME_ZONE = config.get('APP', 'TIME_ZONE')
 
 USE_I18N = True
 
