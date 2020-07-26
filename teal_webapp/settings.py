@@ -88,6 +88,10 @@ DATABASES = {
         'HOST':   config.get('DATABASE', 'HOST'),
         'USER':   config.get('DATABASE', 'USER'),
         'PASSWORD': config.get('DATABASE', 'PASSWORD'),
+
+        OPTIONS: {
+            'driver': 'ODBC Driver 17 for SQL Server',
+        }
     }
 }
 
