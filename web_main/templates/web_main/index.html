@@ -1,6 +1,12 @@
 {% extends 'web_main/layout.html' %}
-{% block 'body' %}
+{% block content %}
 <!-- Page content goes here -->
 
+<h2>First 10 lands in the vLandDetails view:</h2>
+<ul>
+{% for land in first_10_lands %}
+	<li>Land: {{ land.id }} Owner: {{ land.owner_name }}
+{% endfor %}
+</ul>
 
 {% endblock %}

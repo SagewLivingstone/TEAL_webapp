@@ -12,8 +12,10 @@
   <body>
     {% include 'web_main/_navigation.html' %}
 
-    {% block body %}
-    {% endblock %}
+    <div class="container-fluid">
+      {% block content %}
+      {% endblock %}
+    </div>
 
     <!-- CDN Includes at bottom for speed -->
     {% include 'web_main/_site_scripts.html' %}
