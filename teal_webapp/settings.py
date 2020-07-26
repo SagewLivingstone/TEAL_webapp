@@ -21,6 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # settings.ini Config Setup
 config = configparser.RawConfigParser()
 settings_path = os.path.join(BASE_DIR, 'teal_webapp/security/settings.ini')
+print("Path of settings: ")
+print(settings_path)
 config.read(settings_path)
 
 # Quick-start development settings - unsuitable for production
