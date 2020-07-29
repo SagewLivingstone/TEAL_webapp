@@ -13,3 +13,11 @@ def index(request):
 def land_detail(request, land_id):
     context = {}
     return render(request, 'web_main/index.html', context)
+
+def search(request):
+	context = {}
+	return render(request, 'web_main/search.html', context)
+
+def add(request):
+    context = {}
+    return render(request, 'web_main/add.html', context)

@@ -1,7 +1,17 @@
-{% if first_10_lands %}
-  <ul>
-  {% for land in first_10_lands %}
-    <li><a href="/land/{{ land.id }}/">Land: {{ land.id }}</a> </li>
-  {% endfor %}
-  </ul>
-{% endif %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-16">
+
+</head>
+    <div>
+      {% if first_10_lands %}
+      <ul>
+      {% for land in first_10_lands %}
+        <li><a href="/land/{{ land.id }}/">Land: {{ land.id }}</a> </li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+</body>
+</html> 
