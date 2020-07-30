@@ -37,65 +37,19 @@
 
 <body>
   <p id="title">TEAL</p>
- 	<!--form method="POST">
-	<select name="county_id">
+ 	<form method="POST">
+	<!--select name="county_id">
 	{% for county in counties %}
 		<option value="{{ county.id }}">{{county.name}}</option>
-	</select>
-	</form-->
+	</select-->
+	<label for="search_by"> Search by: </label>
+	<input id="search_by" name="field">
+		<option value="county">county</option>
+		<option value="area">area</option>
+	</form>
 
   <div id="container">
-    <script>
-
-    anychart.onDocumentReady(function () {
-
-	  // set chart theme
-    anychart.theme('lightBlue');
-    var stage = acgraph.create('container');
-
-        $.ajax({
-          type: 'GET',
-          url:
-            'https://upload.wikimedia.org/wikipedia/commons/f/f5/USA_Texas_location_map.svg',
-          success: function (data) {
-            var dataSet = anychart.data.set([
-            ]);
-
-            var mapping = dataSet.mapAs({ id: 'id' });
-
-            // create map
-            var map = anychart.map();
-            // set svg data
-            map
-              .geoData(data)
-              .padding([10, 0, 20, 0])
-              // load svg-file how it looked(colors stroke/fill except
-              // for elements of series)
-              .unboundRegions('as-is');
-
-            // create choropleth series for map
-            var series = map.choropleth(mapping);
-
-            var scale = anychart.scales.ordinalColor([
-              { less: 10 },
-              { from: 10, to: 20 },
-              { from: 20, to: 50 },
-              { greater: 50 }
-            ]);
-            scale.colors(['#81d4fa', '#29b6f6', '#0288d1', '#01579b']);
-
-            // set color for choropleth series for map
-            series.colorScale(scale);
-
-            // set container for the chart
-            map.container(stage);
-            // initiate chart drawing
-            map.draw();
-          }
-        });
-      });
-
-      </script>
+	<p>(future implementation of interactive map)</p>
    </div>
     <div id="search">
       {% if first_10_lands %}
