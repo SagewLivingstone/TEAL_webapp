@@ -31,5 +31,5 @@ def add(request):
 		if form.is_valid():
 			form.save()
 			return HttpResponseRedirect(reverse('app_name:url_name'))
-    context = {}
-    return render(request, 'web_main/add.html', context)
+    #context = {}
+    return render(request, 'web_main/add.html', { 'form':Land(),})
