@@ -23,7 +23,7 @@ def search(request):
 			user.item = selected_item
 			user.save()
 	context = {'counties': counties,}
-	return render_to_response('web_main/search.html', {'counties':county}, context,)
+	return render_to_response('web_main/search.html', {'counties':county}, context_instance =  RequestContext(request),)
 
 def add(request):
     context = {}
