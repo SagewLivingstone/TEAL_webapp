@@ -1,3 +1,22 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-16">
+
+</head>
+    <div>
+      {% if first_10_lands %}
+      <ul>
+      {% for land in first_10_lands %}
+        <li><a href="/land/{{ land.id }}/">Land: {{ land.id }}</a> </li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+</body>
+</html> 
+=======
 {% extends 'web_main/layout.html' %}
 {% block content %}
 <!-- Page content goes here -->
@@ -10,3 +29,4 @@
 </ul>
 
 {% endblock %}
+>>>>>>> 6b183d1f1e26215e0b3ba1bb7f78ade7dbd49649

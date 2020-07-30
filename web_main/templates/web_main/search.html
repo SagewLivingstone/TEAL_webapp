@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-16">
+
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-ui.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-exports.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/js/anychart-map.min.js"></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/v8/themes/light_blue.min.js"></script>
+    <link href="https://cdn.anychart.com/playground-css/seat-map/seat-map-title.css" type="text/css" rel="stylesheet">
+    <link href="https://cdn.anychart.com/releases/v8/css/anychart-ui.min.css" type="text/css" rel="stylesheet">
+    <link href="https://cdn.anychart.com/releases/v8/fonts/css/anychart-font.min.css" type="text/css" rel="stylesheet">
+
+</head>
+
+  <style>
+    @charset "UTF-16";
+
+  #title {
+      color: darkcyan;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18pt;
+  }
+
+  #container {
+    height: 200px;
+    width: 200px;
+  }
+
+  #id {
+    stroke: 5px solid cyan;
+  }
+  </style>
+
+
+<body>
+  <p id="title">TEAL</p>
+  <div id="container">
+    <script>
+
+    anychart.onDocumentReady(function () {
+
+	  // set chart theme
+    anychart.theme('lightBlue');
+    var stage = acgraph.create('container');
+
+        $.ajax({
+          type: 'GET',
+          url:
+            'https://upload.wikimedia.org/wikipedia/commons/f/f5/USA_Texas_location_map.svg',
+          success: function (data) {
+            var dataSet = anychart.data.set([
+            ]);
+
+            var mapping = dataSet.mapAs({ id: 'id' });
+
+            // create map
+            var map = anychart.map();
+            // set svg data
+            map
+              .geoData(data)
+              .padding([10, 0, 20, 0])
+              // load svg-file how it looked(colors stroke/fill except
+              // for elements of series)
+              .unboundRegions('as-is');
+
+            // create choropleth series for map
+            var series = map.choropleth(mapping);
+
+            var scale = anychart.scales.ordinalColor([
+              { less: 10 },
+              { from: 10, to: 20 },
+              { from: 20, to: 50 },
+              { greater: 50 }
+            ]);
+            scale.colors(['#81d4fa', '#29b6f6', '#0288d1', '#01579b']);
+
+            // set color for choropleth series for map
+            series.colorScale(scale);
+
+            // set container for the chart
+            map.container(stage);
+            // initiate chart drawing
+            map.draw();
+          }
+        });
+      });
+
+      </script>
+   </div>
+
+    <div id="search">
+      {% if first_10_lands %}
+      <ul>
+      {% for land in first_10_lands %}
+        <li><a href="/land/{{ land.id }}/">Land: {{ land.id }}</a> </li>
+      {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+</body>
+</html> 
