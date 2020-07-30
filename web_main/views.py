@@ -26,10 +26,10 @@ def search(request):
 	return render_to_response('web_main/search.html', {'counties':county}, context_instance =  RequestContext(request),)
 
 def add(request):
-	if request.method == 'POST':
-		form=Land(request.POST)
-		if form.is_valid():
-			form.save()
-			return HttpResponseRedirect(reverse('app_name:url_name'))
-    #context = {}
-    return render(request, 'web_main/add.html', { 'form':Land(),})
+#	if request.method == 'POST':
+#		form=Land(request.POST)
+#		if form.is_valid():
+#			form.save()
+#			return HttpResponseRedirect(reverse('app_name:url_name'))
+    context = {}
+    return render(request, 'web_main/add.html', context)
