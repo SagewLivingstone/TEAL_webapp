@@ -17,13 +17,14 @@ def land_detail(request, land_id):
 
 def search(request):
 	#counties=County.objects.all()
-	form = request.POST
-	if request.method == 'POST':
-			selected_item = get_object_or_404(County, pk=request.POST.get('county_id'))
-			user.item = selected_item
-			user.save()
-#	context = {'counties': counties,}
-	return render_to_response('web_main/search.html', {'counties':county}, context_instance =  RequestContext(request),)
+	#form = request.POST
+	#if request.method == 'POST':
+	#		selected_item = get_object_or_404(County, pk=request.POST.get('county_id'))
+	#		user.item = selected_item
+	#		user.save()
+	context = {'counties': counties,}
+	#return render_to_response('web_main/search.html', {'counties':county}, context_instance =  RequestContext(request),)
+	return render(request, 'web_main/search.html', context)
 
 def add(request):
 #	if request.method == 'POST':
