@@ -16,8 +16,14 @@ def land_detail(request, land_id):
     return render(request, 'web_main/index.html', context)
 
 def search(request):
-	context = {}
-	return render(request, 'web_main/search.html', context)
+	counties=County.objects.all()
+	form = request.POST
+	if request.method == 'POST':
+			selected_item = get_object_or_404(County, pk=request.POST.get('county_id'))
+			user.item = selected_item
+			user.save()
+	#context = {}
+	return render_to_response('web_main/search.html', {'counties':county}, context_instance =  RequestContext(request),)
 
 def add(request):
     context = {}
